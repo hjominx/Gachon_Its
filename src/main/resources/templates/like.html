@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>댓글 수정</title>
+</head>
+<body>
+<form action="/userPage/updateComment" method="post" name="updateCommentForm">
+    <!-- 댓글 정보 입력 필드 -->
+    commentId: <input type="text" name="commentId" th:value="${byCommentId.getCommentId()}"> <br>
+    postId: <input type="text" name="postId" th:value="${byCommentId.getPostId()}"> <br>
+    userId: <input type="text" name="userId" th:value="${byCommentId.getUserId()}"> <br>
+    createdTime: <input type="text" name="createdTime" th:value="${byCommentId.getCreatedTime()}"> <br>
+    updatedTime: <input type="text" name="updatedTime" th:value="${byCommentId.getUpdatedTime()}"> <br>
+    isSelected: <input type="text" name="isSelected" th:value="${byCommentId.getIsSelected()}"> <br>
+    contents: <textarea name="commentContents" cols="30" rows="10" th:text="${byCommentId.getCommentContents()}"></textarea> <br>
+
+    <!-- 좋아요 버튼 -->
+    <button type="button" onclick="likeComment()">좋아요</button>
+    <!-- 댓글 수정 버튼 -->
+    <input type="button" value="댓글 수정" onclick="updateComment()">
+</form>
+</body>
+</html>

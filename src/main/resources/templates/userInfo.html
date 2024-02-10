@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserInfo</title>
+</head>
+<body>
+<h1>UserInfo</h1>
+
+<!-- 게시물 목록을 순회하며 표시 -->
+<table>
+        <td th:text="${user.getUserId()}"></td>
+        <td th:text="${user.getUserName()}"></td>
+        <td th:text="${user.getQPoint()}"></td>
+        <td th:text="${user.getAPoint()}"></td>
+        <td th:if="${user.getFileAttached() == 1}">
+        <th>image</th>
+        <td><img th:src="@{|/upload/user/${user.storedFileName}|}" alt=""></td>
+
+
+    </tr>
+</table>
+<!-- 게시물이 없을 경우 메시지 표시 -->
+<p th:unless="${userPostList}">No user available.</p>
+
+</body>
+</html>

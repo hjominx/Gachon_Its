@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update comment</title>
+</head>
+<body>
+<form action="/userPage/updateInfo" method="post" name="updateInfoForm">
+    userId: <input type="text" name="userId" th:value="${userInfo.getUserId()}"> <br>
+    password: <input type="text" name="password" th:value="${userInfo.getPassword()}"> <br>
+    userName: <input type="text" name="userName" th:value="${userInfo.getUserName()}"> <br>
+    nickName: <input type="text" name="nickName" th:value="${userInfo.getNickName()}"> <br>
+    email: <input type="text" name="email" th:value="${userInfo.getEmail()}"> <br>
+    fileAttached: <input type="text" name="fileAttached" th:value="${userInfo.getFileAttached()}"> <br>
+    qPoint: <input type="text" name="qPoint" th:value="${userInfo.getQPoint()}"> <br>
+    aPoint: <input type="text" name="aPoint" th:value="${userInfo.getAPoint()}"> <br>
+
+    <input type="button" value="내 정보 수정" onclick="boardUpdate()">
+</form>
+<script th:inline="javascript">
+    const boardUpdate = () => {
+
+        document.updateInfoForm.submit();
+
+    }
+</script>
+</body>

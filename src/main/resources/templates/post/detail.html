@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Post List</title>
+</head>
+<body>
+<h1>detail</h1>
+
+<!-- 게시물 목록을 순회하며 표시 -->
+
+
+    제목: <p th:text="${post.getPostTitle()}"></p> <br>
+    작성자: <p th:text="${post.getUserId()}"></p> <br>
+    내용: <p th:text="${post.getPostContents()}"></p> <br>
+    내공: <p th:text="${post.getPointForQ()}"></p> <br>
+    사진: <p th:text="${post.getCreatedTime()}"></p> <br>
+        <p>image</p>
+        <p><img th:src="@{|/upload/post/${post.storedFileName}|}" alt=""></p>
+
+<!-- 좋아요수 출력-->
+
+<!-- 댓글 작성-->
+
+<!-- 댓글 출력-->
+    <p th:text="댓글"></p>
+
+    <tr th:each="com: ${comment}">
+        <td th:text="${com.getUserId()}"></td>
+        <td th:text="${com.getCommentContents()}"></td>
+        <td th:text="${com.getIsSelected()}"></td>
+    </tr>
+
+
+</body>
+
+</html>

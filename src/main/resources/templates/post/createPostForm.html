@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+</head>
+<body>
+<form action="/post/createPostForm" method="post" enctype="multipart/form-data" name="createPost">
+    userId: <input type="text" name="userId" th:value="${userId.getUserId()}"> <br>     <!--임시-->
+    <label for="selectOption">category: </label>
+    <select id="selectOption" name="category">
+        <option selected value="none">옵션을 선택해주세요</option>
+        <option th:each="timetable :${timetableList}" th:value="${timetable.subjectId}" th:utext="|${timetable.subjectName} ${timetable.professorName}|"></option>
+    </select> <br>
+    title: <input type="text" name="postTitle"> <br>
+    contents: <textarea name="postContents" cols="30" rows="10"></textarea> <br>
+    QPoint: <textarea name="pointForQ" cols="30" rows="10"></textarea> <br>
+    file: <input type="file" name="postFile"> <br>
+    fileAttached: <input type="text" name="fileAttached" th:value=0> <br>
+
+    <input type="submit" value="글작성">
+</form>
+
+</body>
+</html>

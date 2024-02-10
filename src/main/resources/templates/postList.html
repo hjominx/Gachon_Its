@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Post List</title>
+</head>
+<body>
+<h1>User Post List</h1>
+
+<!-- 게시물 목록을 순회하며 표시 -->
+<table id=postTable>
+    <tbody>
+        <tr th:each="post: ${postList}">
+            <td th:text="${post.getPostId()}"></td>
+            <td th:text="${post.getPostTitle()}"></td>
+            <td th:text="${post.getPostContents()}"></td>
+            <td th:text="${post.getPointForQ()}"></td>
+            <td th:if="${post.getFileAttached() == 1}">
+                <th>image</th>
+                <td><img th:src="@{|/upload/post/${post.storedFileName}|}" alt=""></td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <form name="search_form" action="/post/getSearchList" method="post">
+        <select name="type">
+            <option selected value="">검색 내용 선택</option>
+            <option value="type">제목 + 내용</option>
+        </select>
+        <input type="text" name="keyword">
+        <input type="button" value="검색" onclick="getKeyword()">
+
+    </form>
+</div>
+
+<!-- 게시물이 없을 경우 메시지 표시 -->
+<p th:unless="${postList}">No posts available.</p>
+
+<script th:inline="javascript">
+    const getKeyword = () => {
+        document.search_form.submit();
+    };
+
+</script>
+</body>
+
+</html>

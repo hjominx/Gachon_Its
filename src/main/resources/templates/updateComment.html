@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update comment</title>
+</head>
+<body>
+<form action="/userPage/updateComment" method="post" name="updateCommentForm">
+    commentId: <input type="text" name="commentId" th:value="${byCommentId.getCommentId()}"> <br>
+    postId: <input type="text" name="postId" th:value="${byCommentId.getPostId()}"> <br>
+    userId: <input type="text" name="userId" th:value="${byCommentId.getUserId()}"> <br>
+    createdTime: <input type="text" name="createdTime" th:value="${byCommentId.getCreatedTime()}"> <br>
+    updatedTime: <input type="text" name="updatedTime" th:value="${byCommentId.getUpdatedTime()}"> <br>
+    isSelected: <input type="text" name="isSelected" th:value="${byCommentId.getIsSelected()}"> <br>
+    contents: <textarea name="commentContents" cols="30" rows="10" th:text="${byCommentId.getCommentContents()}"></textarea> <br>
+
+    <button type="button" onclick="likeComment()">좋아요</button>
+    <input type="button" value="댓글수정" onclick="boardUpdate()">
+</form>
+<script th:inline="javascript">
+    const boardUpdate = () => {
+
+        document.updateCommentForm.submit();
+
+    }
+</script>
+</body>

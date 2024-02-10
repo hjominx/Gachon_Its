@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update post</title>
+</head>
+<body>
+<form action="/userPage/updatePost" method="post" name="updatePostForm">
+    postId: <input type="text" name="postId" th:value="${byPostId.getPostId()}"> <br>
+    userId: <input type="text" name="userId" th:value="${byPostId.getUserId()}"> <br>
+    createdTime: <input type="text" name="createdTime" th:value="${byPostId.getCreatedTime()}"> <br>
+    updatedTime: <input type="text" name="updatedTime" th:value="${byPostId.getUpdatedTime()}"> <br>
+    fileAttached: <input type="text" name="fileAttached" th:value="${byPostId.getFileAttached()}"> <br>
+    title: <input type="text" name="postTitle" th:value="${byPostId.getPostTitle()}"> <br>
+    pointForQ: <input type="text" name="pointForQ" th:value="${byPostId.getPointForQ()}"> <br>
+    contents: <textarea name="postContents" cols="30" rows="10" th:text="${byPostId.getPostContents()}"></textarea> <br>
+
+    <button type="button" onclick="likeComment()">좋아요</button>
+    <input type="button" value="글수정" onclick="boardUpdate()">
+</form>
+<script th:inline="javascript">
+    const boardUpdate = () => {
+
+            document.updatePostForm.submit();
+
+    }
+</script>
+</body>
